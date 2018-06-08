@@ -15,4 +15,9 @@ public class CurrencyData {
     public String toString() {
         return "Валюта: " + id + ". Название: " + currencyName + ". Символ: " + currencySymbol;
     }
+
+
+    String getId() {
+        return id;
+    }
 }
