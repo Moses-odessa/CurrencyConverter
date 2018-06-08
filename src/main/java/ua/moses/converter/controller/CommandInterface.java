@@ -8,6 +8,8 @@ public interface CommandInterface {
     String GREETING = "Добро пожаловать!";
     String PARTING = "До скорой встречи!";
     String UNKNOW_WARNING = "Неизвестная комманда!";
+    String RESULT_CONVERTING_STRING = "%s %s эквивалентно %s %s по курсу %s";
+    String FAULT_PARAMETERS = "Неверные параметры комманды! Смотрите справку!";
     String HELP_INFO = String.format("Доступные комманды:\n" +
             "%s AMOUNT FROM_CURRENCY TO_CURRENCY \n" +
             "\t- конвертирует валюту на сумму AMOUNT из валюты FROM_CURRENCY в валюту TO_CURRENCY\n" +

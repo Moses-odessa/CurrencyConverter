@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface CurrencyConverter {
     double convert(double amount, String fromCurrency, String toCurrency);
+    double rate(String fromCurrency, String toCurrency);
     List<CurrencyData> currencies();
 
 }

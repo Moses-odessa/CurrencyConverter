@@ -1,9 +1,6 @@
 package ua.moses.converter.controller;
 
-import ua.moses.converter.controller.command.ExitCommand;
-import ua.moses.converter.controller.command.HelpCommand;
-import ua.moses.converter.controller.command.ListCommand;
-import ua.moses.converter.controller.command.UnknowCommand;
+import ua.moses.converter.controller.command.*;
 import ua.moses.converter.model.CurrencyConverter;
 
 import java.util.Arrays;
@@ -19,6 +16,7 @@ public class CommandController {
                 new ExitCommand(),
                 new HelpCommand(),
                 new ListCommand(currencyConverter),
+                new ConvertCommand(currencyConverter),
                 new UnknowCommand()   //necessarily in last place
         };
     }
