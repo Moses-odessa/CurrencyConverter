@@ -1,6 +1,7 @@
 package ua.moses.converter.controller;
 
 import ua.moses.converter.controller.command.ExitCommand;
+import ua.moses.converter.controller.command.HelpCommand;
 import ua.moses.converter.controller.command.UnknowCommand;
 import ua.moses.converter.model.CurrencyConverter;
 
@@ -11,6 +12,7 @@ public class CommandController {
     private CurrencyConverter currencyConverter;
     private CommandInterface[] commands = new CommandInterface[]{
             new ExitCommand(),
+            new HelpCommand(),
             new UnknowCommand()   //necessarily in last place
     };
 
