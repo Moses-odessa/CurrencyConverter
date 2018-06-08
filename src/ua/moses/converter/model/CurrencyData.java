@@ -5,7 +5,7 @@ public class CurrencyData {
     private String currencyName;
     private String currencySymbol;
 
-    public CurrencyData(String id, String currencyName, String currencySymbol) {
+    CurrencyData(String id, String currencyName, String currencySymbol) {
         this.id = id;
         this.currencyName = currencyName;
         this.currencySymbol = currencySymbol;
@@ -13,10 +13,6 @@ public class CurrencyData {
 
     @Override
     public String toString() {
-        return "CurrencyData{" +
-                "id='" + id + '\'' +
-                ", currencyName='" + currencyName + '\'' +
-                ", currencySymbol='" + currencySymbol + '\'' +
-                '}';
+        return "Валюта: " + id + ". Название: " + currencyName + ". Символ: " + currencySymbol;
     }
 }
