@@ -2,6 +2,7 @@ package ua.moses.converter.model;
 
 import retrofit2.Call;
 import retrofit2.Response;
+import ua.moses.converter.controller.CommandInterface;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ public class CurrencyConverterApi implements CurrencyConverter {
     }
 
     @Override
-    public double rate(String fromCurrency, String toCurrency) {
+    public double rate(String fromCurrency, String toCurrency) throws RuntimeException {
         CurrencyConverterApiClient currencyConverterApiClient = CurrencyConverterApiClient.retrofit.create(CurrencyConverterApiClient.class);
         Call<Map<String,RateValue>> call = currencyConverterApiClient.getRate(fromCurrency + "_" + toCurrency);
         try {
@@ -24,8 +25,9 @@ public class CurrencyConverterApi implements CurrencyConverter {
             RateValue rate = body.get(fromCurrency + "_" + toCurrency);
             return rate.getVal();
         } catch (IOException e) {
-            //
-            return 0;
+            throw new RuntimeException(e.getMessage());
+        } catch (NullPointerException e) {
+            throw new RuntimeException("CURRENCY PAIR NOT FOUND");
         }
 
     }

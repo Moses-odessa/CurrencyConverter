@@ -12,16 +12,34 @@ public class ConvertCommand implements CommandInterface {
 
     @Override
     public void run(String... parameters) {
+        double rate;
+        double amount;
+        String fromCurrency;
+        String toCurrency;
+
         if (parameters.length >= 3) {
-            double rate;
-            //todo add parse exception
-            double amount = Double.parseDouble(parameters[0]);
-            String fromCurrency = parameters[1];
-            String toCurrency = parameters[2];
-            rate = currencyConverter.rate(fromCurrency, toCurrency);
-            System.out.println(String.format(RESULT_CONVERTING_STRING, amount, fromCurrency, rate*amount, toCurrency, rate));
+            fromCurrency = parameters[1];
+            toCurrency = parameters[2];
+        } else if (parameters.length >= 2) {
+            fromCurrency = DEFAULT_CURRENCY;
+            toCurrency = parameters[1];
         } else {
             System.out.println(FAULT_PARAMETERS);
+            return;
+        }
+
+        try {
+            amount = Double.parseDouble(parameters[0]);
+        }catch (NumberFormatException e){
+            System.out.println(FAULT_PARAMETERS);
+            return;
+        }
+
+        try {
+            rate = currencyConverter.rate(fromCurrency, toCurrency);
+            System.out.println(String.format(RESULT_CONVERTING_STRING, amount, fromCurrency, rate * amount, toCurrency, rate));
+        } catch (RuntimeException e) {
+            System.out.println(CONNECTION_ERROR + e.getLocalizedMessage());
         }
 
     }
